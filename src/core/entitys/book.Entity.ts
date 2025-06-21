@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany } from 'typeorm';
+import { ImagesEntity } from './images.Entity';
 
 @Entity('books')
 export class BookEntity extends BaseEntity {
@@ -25,4 +26,8 @@ export class BookEntity extends BaseEntity {
 
   @Column({ type: 'int' })
   quantity: number;
+
+  @OneToMany(() => ImagesEntity, (images) => images.book)
+  images: ImagesEntity[];
 }
+
