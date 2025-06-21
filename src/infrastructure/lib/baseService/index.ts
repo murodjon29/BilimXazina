@@ -1,4 +1,3 @@
-import { date } from 'fp-ts';
 import { Repository } from 'typeorm';
 import { IFindOtions } from './interface';
 
