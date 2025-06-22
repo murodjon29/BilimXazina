@@ -6,18 +6,20 @@ import { v4 } from 'uuid';
 
 @Injectable()
 export class FileService {
-  private readonly base_url = `${config.BASE_API}`;
+  private readonly base_url = `${config.FILE_PATH}`;
 
   async createFile(file: Express.Multer.File | any): Promise<string> {
     try {
       const ext = extname(file.orginalname);
       const file_name = `${file.orginalname.split(ext)[0]}__${v4}${ext.toLowerCase()}`;
       const file_path = resolve(__dirname, '..', '..', '..', '..', 'base');
+      console.log(file_path);
+      
       if (!existsSync(file_path)) {
         mkdirSync(file_path, { recursive: true });
       }
       await new Promise<void>((resolve, reject) => {
-        writeFile(join(file_path, file_name), file.buffer, (err) => {
+         writeFile(join(file_path, file_name), file.buffer, (err) => {
           if (err) reject(err);
           resolve();
         });

@@ -7,13 +7,14 @@ export class CreateBookDto {
     description: 'Book title',
     example: 'Bilim Xazna',
   })
+  // @IsInt()
+  // @IsNotEmpty()
+  // id: number
+
   @IsNotEmpty()
   @IsString()
   title: string;
 
-  @IsInt()
-  @IsNotEmpty()
-  id: number
 
   @ApiProperty({
     type: String,
