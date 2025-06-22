@@ -1,8 +1,13 @@
-import { BaseEntity, Column, Entity, OneToMany } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ImagesEntity } from './images.Entity';
+import Languages from 'src/common/enum/language';
 
 @Entity('books')
 export class BookEntity extends BaseEntity {
+
+  @PrimaryGeneratedColumn('increment')
+  id: number
+
   @Column({ type: 'varchar' })
   title: string;
 
@@ -18,7 +23,7 @@ export class BookEntity extends BaseEntity {
   @Column({ type: 'int' })
   rating: number;
 
-  @Column({ type: 'enum', enum: Language, default: Language.UZ })
+  @Column({ type: 'enum', enum: Languages, default: Languages.UZ })
   language: string;
 
   @Column({ type: 'varchar', name: 'image' })

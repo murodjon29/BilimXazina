@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { AllExceptionFilter } from 'src/infrastructure/exception/all.exception.filter';
+import { AllExceptionFilter } from 'src/infrastructure/lib/exception/all.exception.filter';
 import * as cookieParser from 'cookie-parser';
 import { HttpStatus, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';

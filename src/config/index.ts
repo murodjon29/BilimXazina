@@ -8,7 +8,7 @@ export type ConfigType = {
   NODE_ENV: string;
   DB_URL: string;
   ACCESS_TOKEN_KEY: string;
-  ACCES_TOKEN_TIME: string;
+  ACCESS_TOKEN_TIME: string;
   REFRESH_TOKEN_KEY: string;
   REFRESH_TOKEN_TIME: string | undefined;
   FILE_PATH: string | undefined;
@@ -22,7 +22,7 @@ const requiredVariables = [
   'DEV_DB_URL',
   'PROD_DB_URL',
   'ACCESS_TOKEN_KEY',
-  'ACCES_TOKEN_TIME',
+  'ACCESS_TOKEN_TIME',
   'REFRESH_TOKEN_KEY',
   'REFRESH_TOKEN_TIME',
   'FILE_PATH',
@@ -49,7 +49,7 @@ export const config: ConfigType = {
       ? (process.env.DEV_DB_URL as string)
       : (process.env.PROD_DB_URL as string),
   ACCESS_TOKEN_KEY: process.env.ACCESS_TOKEN_KEY as string,
-  ACCES_TOKEN_TIME: process.env.ACCES_TOKEN_TIME as string,
+  ACCESS_TOKEN_TIME: process.env.ACCESS_TOKEN_TIME as string,
   REFRESH_TOKEN_KEY: process.env.REFRESH_TOKEN_KEY as string,
   REFRESH_TOKEN_TIME: process.env.REFRESH_TOKEN_TIME,
   FILE_PATH: process.env.FILE_PATH,
