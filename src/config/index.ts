@@ -51,8 +51,8 @@ export const config: ConfigType = {
   ACCESS_TOKEN_KEY: process.env.ACCESS_TOKEN_KEY as string,
   ACCESS_TOKEN_TIME: process.env.ACCESS_TOKEN_TIME as string,
   REFRESH_TOKEN_KEY: process.env.REFRESH_TOKEN_KEY as string,
-  REFRESH_TOKEN_TIME: process.env.REFRESH_TOKEN_TIME,
-  FILE_PATH: process.env.FILE_PATH,
-  BASE_API: process.env.BASE_API,
-  BILIM_XAZNA_API: process.env.BILIM_XAZNA_API,
+  REFRESH_TOKEN_TIME: process.env.REFRESH_TOKEN_TIME as string,
+  FILE_PATH: process.env.FILE_PATH as string,
+  BASE_API: process.env.BASE_API as string,
+  BILIM_XAZNA_API: process.env.BILIM_XAZNA_API as string,
 };
