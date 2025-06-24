@@ -45,6 +45,7 @@ export class BookController {
         image: { type: 'array', items: { type: 'string', format: 'binary' } }, // image maydoni
       },
       required: ['title', 'author', 'price', 'image'],
+      
       example: {
         title: 'Bilim Xazna',
         author: 'Bilim Xazna',
@@ -89,7 +90,7 @@ export class BookController {
       },
     },
   })
-  @UseInterceptors(FilesInterceptor('image')) // images -> image
+  @UseInterceptors(FilesInterceptor('images')) // images -> image
   @Post()
   async createBook(@Body() createBookDto: CreateBookDto, @UploadedFiles() files: Express.Multer.File[]) {
     if (!files || files.length === 0) {

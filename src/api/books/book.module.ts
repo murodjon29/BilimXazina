@@ -5,9 +5,10 @@ import { BookController } from './book.controller';
 import { BookService } from './book.service';
 import { FileService } from '../file/file.service';
 import { ImagesEntity } from 'src/core/entitys/images.Entity';
+import { FileModule } from '../file/file..module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([BookEntity, ImagesEntity])],
+  imports: [TypeOrmModule.forFeature([BookEntity, ImagesEntity]), FileModule],
   controllers: [BookController],
   providers: [BookService, FileService],
 })

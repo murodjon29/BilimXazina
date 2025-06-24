@@ -10,10 +10,10 @@ export type ConfigType = {
   ACCESS_TOKEN_KEY: string;
   ACCESS_TOKEN_TIME: string;
   REFRESH_TOKEN_KEY: string;
-  REFRESH_TOKEN_TIME: string | undefined;
-  FILE_PATH: string | undefined;
-  BASE_API: string | undefined;
-  BILIM_XAZNA_API: string | undefined;
+  REFRESH_TOKEN_TIME: string;
+  FILE_PATH: string ;
+  BASE_API: string ;
+  BILIM_XAZNA_API: string;
 };
 
 const requiredVariables = [

@@ -6,14 +6,13 @@ import { v4 } from 'uuid';
 
 @Injectable()
 export class FileService {
-  private readonly base_url = `${config.FILE_PATH}`;
+  private readonly base_url = config.FILE_PATH;
 
   async createFile(file: Express.Multer.File | any): Promise<string> {
-    try {
-      const ext = extname(file.orginalname);
-      const file_name = `${file.orginalname.split(ext)[0]}__${v4}${ext.toLowerCase()}`;
-      const file_path = resolve(__dirname, '..', '..', '..', '..', 'base');
-      console.log(file_path);
+    try {           
+      const ext = extname(file.originalname);      
+      const file_name = `${file.originalname.split('.')[0].replace(/\s+/g, '')}__${Date.now()}${ext.toLowerCase()}`;      
+      const file_path = join(__dirname, '..', '..', '..', '..',   'bilimXazna-images');
       
       if (!existsSync(file_path)) {
         mkdirSync(file_path, { recursive: true });
@@ -58,7 +57,7 @@ export class FileService {
 
   async existsFile(file_name: string) {
     const file = file_name.replace(this.base_url, '');
-    const file_path = resolve(__dirname, '..', '..', '..', '..', 'base', file);
+    const file_path = resolve(__dirname, '..', '..', '..', '..', 'bilimXazna-images', file);
     if (existsSync(file_path)) return true;
     return false;
   }
