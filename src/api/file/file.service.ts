@@ -6,7 +6,7 @@ import { v4 } from 'uuid';
 
 @Injectable()
 export class FileService {
-  private readonly base_url = config.FILE_PATH;
+  private readonly base_url = config.BASE_API;
 
   async createFile(file: Express.Multer.File | any): Promise<string> {
     try {           
@@ -23,7 +23,7 @@ export class FileService {
           resolve();
         });
       });
-      return `${this.base_url}/${file_name}`;
+      return `${this.base_url}${file_name}`;
     } catch (error) {
       throw new BadRequestException(`Error on creating file: ${error}`);
     }
@@ -31,7 +31,7 @@ export class FileService {
 
   async deleteFile(file_name: string): Promise<void> {
     try {
-      const prefix = `${this.base_url}`;
+      const prefix = this.base_url;
       const file = (file_name as string).replace(prefix, '');
       const file_path = resolve(
         __dirname,
@@ -39,7 +39,7 @@ export class FileService {
         '..',
         '..',
         '..',
-        'base',
+        'bilimXazna-images',
         file,
       );
       if (!existsSync(file_path))
@@ -57,6 +57,7 @@ export class FileService {
 
   async existsFile(file_name: string) {
     const file = file_name.replace(this.base_url, '');
+    
     const file_path = resolve(__dirname, '..', '..', '..', '..', 'bilimXazna-images', file);
     if (existsSync(file_path)) return true;
     return false;

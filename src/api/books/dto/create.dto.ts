@@ -58,8 +58,6 @@ export class CreateBookDto {
     description: 'Book language',
     example: 'uz',
   })
-
-
   @IsEnum(Languages)
   language: Languages = Languages.UZ;
 
