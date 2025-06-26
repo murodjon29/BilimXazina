@@ -36,7 +36,7 @@ export class Application {
       SwaggerModule.createDocument(app, config_swagger);
     SwaggerModule.setup(api, app, documentFactory);
     await app.listen(config.API_PORT, () =>
-      console.log(Date.now(), 'Server is running on PORT:', config.API_PORT),
+      console.log(Date.now(), 'Server is running on PORT:', config.API_PORT, `link: ${config.BILIM_XAZNA_API}#`),
     );
   }
 }

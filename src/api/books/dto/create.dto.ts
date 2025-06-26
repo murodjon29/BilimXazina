@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import Languages from 'src/common/enum/language';
 
 export class CreateBookDto {
   @ApiProperty({
@@ -57,12 +58,12 @@ export class CreateBookDto {
     description: 'Book language',
     example: 'uz',
   })
-  @IsNotEmpty()
-  @IsString()
-  language: string;
+  @IsEnum(Languages)
+  language: Languages = Languages.UZ;
 
-  @IsOptional()
-  image?: string;
+  // @IsString()
+  // @IsOptional()
+  // images?: string;
 
   @ApiProperty({
     type: Number,

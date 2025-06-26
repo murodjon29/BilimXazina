@@ -14,7 +14,7 @@ import { FileModule } from './file/file..module';
       type: 'postgres',
       url: config.DB_URL,
       entities: [__dirname +'dist/core/entity/.entity{.js,.ts}'],
-      synchronize: config.NODE_ENV === 'dev',
+      synchronize: true,
       autoLoadEntities: true,
     }),
     ServeStaticModule.forRoot({
