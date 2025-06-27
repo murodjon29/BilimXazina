@@ -31,6 +31,7 @@ export class BookService extends BaseService<CreateBookDto, DeepPartial<BookEnti
     await queryRunner.startTransaction();
     try {
       if (createBookDto.rating > 5) throw new BadRequestException('Rating must be less than 5');
+      if(!createBookDto.quantity || createBookDto.quantity === 0) createBookDto.quantity = 1;
       const book = queryRunner.manager.create(BookEntity, createBookDto);
       await queryRunner.manager.save(book)      
       if (files && files.length > 0) {
@@ -146,6 +147,7 @@ export class BookService extends BaseService<CreateBookDto, DeepPartial<BookEnti
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {      
+      if(!await this.getRepository.findOneBy({ id })) throw new NotFoundException(`Book with id ${id} not found`);
       if (date.rating && date.rating > 5) throw new BadRequestException('Rating must be less than 5');
       if(date.quantity && date.quantity > 0) throw new BadRequestException('Quantity must be greater than 0');
       const book = await this.getRepository.findOne({ where: { id }, relations: ['images'] });
@@ -193,7 +195,7 @@ export class BookService extends BaseService<CreateBookDto, DeepPartial<BookEnti
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
-      
+      if(!await this.getRepository.findOneBy({ id })) throw new NotFoundException(`Book with id ${id} not found`);
       const book = await this.getRepository.findOne({ where: { id }, relations: ['images'] });
       if(!book) throw new NotFoundException(`Book with id ${id} not found`);
       if(book.images && book.images.length > 0){
