@@ -7,6 +7,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { JwtModule } from '@nestjs/jwt';
 import { BookModule } from './books/book.module';
 import { FileModule } from './file/file..module';
+import { OrderModule } from './orders/order..module';
 
 @Module({
   imports: [
@@ -18,14 +19,15 @@ import { FileModule } from './file/file..module';
       autoLoadEntities: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: resolve(__dirname, '..', '..', '..', 'base'),
-      serveRoot: 'api/v1/base',
+      rootPath: resolve(__dirname, '..', '..', '..', 'bilimXazna-images'),
+      serveRoot: '/api/v1/bilimXazna-images',
     }),
     CacheModule.register({ isGlobal: true }),
     JwtModule.register({ global: true }),
     // AdminModule kabi modullar chaqirilihs kerak!!!!!!!!!=======>
     BookModule,
-    FileModule
+    FileModule,
+    OrderModule
   ],
 })
 export class AppModule {}

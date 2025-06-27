@@ -61,16 +61,20 @@ export class CreateBookDto {
   @IsEnum(Languages)
   language: Languages = Languages.UZ;
 
-  // @IsString()
-  // @IsOptional()
-  // images?: string;
 
   @ApiProperty({
     type: Number,
     description: 'Book quantity',
     example: 10,
   })
-  @IsNotEmpty()
-  @IsString()
-  quantity: number;
+  @IsOptional()
+  quantity?: number;
+
+  @ApiProperty({
+    type: Number,
+    description: 'Book barcode',
+    example: 1234567890,
+  })
+  @IsOptional()
+  barcode?: number;
 }
